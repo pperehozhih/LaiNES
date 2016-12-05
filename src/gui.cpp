@@ -57,7 +57,7 @@ void init()
 
     APU::init();
     soundQueue = new Sound_Queue;
-    soundQueue->init(96000);
+    soundQueue->init(SAMPLE_RATE);
 
     // Initialize graphics structures:
     window      = SDL_CreateWindow  ("LaiNES",

@@ -8,13 +8,13 @@ namespace APU {
 Nes_Apu apu;
 Blip_Buffer buf;
 
-const int OUT_SIZE = 4096;
+const int OUT_SIZE = BUFFER_SIZE;
 blip_sample_t outBuf[OUT_SIZE];
 
 void init()
 {
-    buf.sample_rate(96000);
-    buf.clock_rate(1789773);
+    buf.sample_rate(SAMPLE_RATE);
+    buf.clock_rate(CLOCK_RATE);
 
     apu.output(&buf);
     apu.dmc_reader(CPU::dmc_read);
@@ -42,8 +42,7 @@ void run_frame(int elapsed)
     apu.end_frame(elapsed);
     buf.end_frame(elapsed);
 
-    if (buf.samples_avail() >= OUT_SIZE)
-        GUI::new_samples(outBuf, buf.read_samples(outBuf, OUT_SIZE));
+    GUI::new_samples(outBuf, buf.read_samples(outBuf, buf.samples_avail()));
 }
 
 

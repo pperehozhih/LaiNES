@@ -264,7 +264,7 @@ void run_frame()
         exec();
     }
 
-    APU::run_frame(elapsed());
+    APU::run_frame(TOTAL_CYCLES * 2);
 }
 
 
