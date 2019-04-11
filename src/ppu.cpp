@@ -11,7 +11,7 @@ Mirroring mirroring;       // Mirroring mode.
 u8 ciRam[0x800];           // VRAM for nametables.
 u8 cgRam[0x20];            // VRAM for palettes.
 u8 oamMem[0x100];          // VRAM for sprite properties.
-Sprite oam[8], secOam[8];  // Sprite buffers.
+Sprite oam[16], secOam[16];  // Sprite buffers.
 u32 pixels[256 * 240];     // Video buffer.
 
 Addr vAddr, tAddr;  // Loopy V, T.

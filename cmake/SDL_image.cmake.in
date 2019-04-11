@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 2.8.2)
+
+project(SDL_image-download NONE)
+
+include(ExternalProject)
+ExternalProject_Add(SDL_image
+  	GIT_REPOSITORY    https://github.com/SDL-mirror/SDL_image.git
+  	GIT_TAG           release-2.0.4
+  	GIT_PROGRESS	  true
+  	GIT_SHALLOW		  true
+  	SOURCE_DIR        "${CMAKE_BINARY_DIR}/SDL_image-src"
+  	BINARY_DIR        "${CMAKE_BINARY_DIR}/SDL_image-bin"
+  	CONFIGURE_COMMAND "${CMAKE_BINARY_DIR}/SDL_image-src/configure"
+                      "--prefix=${CMAKE_BINARY_DIR}/root"
+                      "--with-sdl-prefix=${CMAKE_BINARY_DIR}/root"
+    BUILD_COMMAND     "make"
+  	INSTALL_COMMAND   "make" "install"
+)

@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 2.8.2)
+
+project(SDL_ttf-download NONE)
+
+include(ExternalProject)
+ExternalProject_Add(SDL_ttf
+  	GIT_REPOSITORY    https://github.com/SDL-mirror/SDL_ttf.git
+  	GIT_TAG           release-2.0.15
+  	GIT_PROGRESS	  true
+  	GIT_SHALLOW		  true
+  	SOURCE_DIR        "${CMAKE_BINARY_DIR}/SDL_ttf-src"
+  	BINARY_DIR        "${CMAKE_BINARY_DIR}/SDL_ttf-bin"
+  	CONFIGURE_COMMAND "${CMAKE_BINARY_DIR}/SDL_ttf-src/configure"
+                      "--prefix=${CMAKE_BINARY_DIR}/root"
+                      "--with-sdl-prefix=${CMAKE_BINARY_DIR}/root"
+    BUILD_COMMAND     "make"
+  	INSTALL_COMMAND   "make" "install"
+)

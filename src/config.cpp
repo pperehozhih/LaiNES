@@ -120,7 +120,7 @@ void load_settings()
 void save_settings()
 {
     /* Screen settings */
-    char buf[2] = {0};
+    char buf[16] = {0};
     sprintf(buf, "%d", last_window_size);
     ini.SetValue("screen", "size", buf);
 

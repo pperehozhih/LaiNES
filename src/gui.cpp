@@ -158,7 +158,7 @@ void render_texture(SDL_Texture* texture, int x, int y)
 /* Generate a texture from text */
 SDL_Texture* gen_text(std::string text, SDL_Color color)
 {
-    SDL_Surface* surface = TTF_RenderText_Blended(font, text.c_str(), color);
+    SDL_Surface* surface = TTF_RenderUTF8_Blended(font, text.c_str(), color);
     SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
 
     SDL_FreeSurface(surface);
